@@ -4,6 +4,7 @@ import SetNav from './components/SetNav';
 import AddEmployee from './components/AddEmployee';
 import RemoveEmployee from './components/RemoveEmployee';
 import ViewEmployees from './components/ViewEmployees'
+import './App.css';
 
 
 function App() {

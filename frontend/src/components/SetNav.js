@@ -5,6 +5,7 @@ import AddEmployee from './AddEmployee';  // Import the AddEmployee component
 import RemoveEmployee from './RemoveEmployee';  // Ensure this component is imported if it's being used
 import ViewEmployees from './ViewEmployees';
 
+
 function SetNav() {
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
   const [showRemoveEmployeeModal, setShowRemoveEmployeeModal] = useState(false);
