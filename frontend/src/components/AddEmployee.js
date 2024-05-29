@@ -17,6 +17,7 @@ function AddEmployee({ show, handleClose }) {
             <Form.Control
               type="text"
               placeholder="First Name"
+              
               autoFocus
             />
           </Form.Group>
