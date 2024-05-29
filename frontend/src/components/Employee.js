@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
-function Employee({ employee = {} }) {
-  
-  const { firstName = '', lastName = '', employeeID = '', position ='', wage ='' } = user;
+function Employee(user) {
+  console.log("User", user);
+  const { cellNum, employee, setEmployee } = user;
 
   return (
-    <div>
-      firstName: {firstName},
-      lastName: {lastName},
-      employeeID: {employeeID},
-      position: {position},
-      wage: {wage},
-    </div>
+    <tr>
+      <td>{cellNum}</td>
+      <td>{employee.firstName}</td>
+      <td>{employee.lastName}</td>
+      <td>{employee.employeeID}</td>
+      <td>{employee.position}</td>
+      <td>{employee.wage}</td>
+    </tr>
   );
 }
 

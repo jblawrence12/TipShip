@@ -1,6 +1,9 @@
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
+import Employee from "./Employee";
 
-function ViewEmployees() {
+function ViewEmployees(employeeList) {
+  let cellNumber = 1;
+  const { employees, setEmployees } = employeeList;
   return (
     <Table striped>
       <thead>
@@ -9,35 +12,31 @@ function ViewEmployees() {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Employee ID</th>
-          <th>Position</th> 
-          <th>Wage</th> 
+          <th>Position</th>
+          <th>Wage</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        {/* <tr>
           <td>1</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>453</td>
           <td>Bartender</td>
           <td>16.28</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>53</td>
-          <td>Server</td>
-          <td>16.28</td>
-        </tr>
-        <tr>
-        <td>2</td>
-          <td>Jacob</td>
-          <td>tonson</td>
-          <td>323</td>
-          <td>Driverr</td>
-          <td>16.28</td>
-        </tr>
+        </tr> */}
+
+        {employees.map((employee) => {
+          return (
+            <Employee
+              cellNum={cellNumber}
+              {...cellNumber++}
+              employee={employee}
+              setEmployees={setEmployees}
+              key={employee.employeeID}
+            />
+          );
+        })}
       </tbody>
     </Table>
   );

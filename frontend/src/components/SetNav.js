@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import AddEmployee from './AddEmployee';  // Import the AddEmployee component
-import RemoveEmployee from './RemoveEmployee';  // Ensure this component is imported if it's being used
-import ViewEmployees from './ViewEmployees';
+import React, { useState } from "react";
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import AddEmployee from "./AddEmployee"; // Import the AddEmployee component
+import RemoveEmployee from "./RemoveEmployee"; // Ensure this component is imported if it's being used
+import ViewEmployees from "./ViewEmployees";
 
-
-function SetNav() {
+function SetNav({ employees, setEmployees }) {
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
   const [showRemoveEmployeeModal, setShowRemoveEmployeeModal] = useState(false);
   const [showTable, setShowTable] = useState(false);
@@ -30,27 +29,45 @@ function SetNav() {
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#link">Current Pay Period</Nav.Link>
               <NavDropdown title="Manage Employees" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="#" onClick={handleShowAddEmployee}>
+                <NavDropdown.Item
+                  as={Link}
+                  to="#"
+                  onClick={handleShowAddEmployee}
+                >
                   Add Employee
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="#" onClick={handleShowRemoveEmployee}>
+                <NavDropdown.Item
+                  as={Link}
+                  to="#"
+                  onClick={handleShowRemoveEmployee}
+                >
                   Remove Employee
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="#" onClick={toggleTable}>
                   View Employee
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Set Tip Out</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.4">
+                  Set Tip Out
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
       {/* Modals */}
-      <AddEmployee show={showAddEmployeeModal} handleClose={handleCloseAddEmployee} />
-      <RemoveEmployee show={showRemoveEmployeeModal} handleClose={handleCloseRemoveEmployee} />
+      <AddEmployee
+        show={showAddEmployeeModal}
+        handleClose={handleCloseAddEmployee}
+      />
+      <RemoveEmployee
+        show={showRemoveEmployeeModal}
+        handleClose={handleCloseRemoveEmployee}
+      />
       {/* ViewEmployees Table */}
-      {showTable && <ViewEmployees />}
+      {showTable && (
+        <ViewEmployees employees={employees} setEmployees={setEmployees} />
+      )}
     </div>
   );
 }
