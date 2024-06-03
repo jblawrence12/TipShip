@@ -57,6 +57,7 @@ function SetNav({ employees, setEmployees }) {
       </Navbar>
       {/* Modals */}
       <AddEmployee
+        setEmployees={setEmployees}
         show={showAddEmployeeModal}
         handleClose={handleCloseAddEmployee}
       />
