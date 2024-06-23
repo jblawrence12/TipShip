@@ -83,25 +83,18 @@ function AddEmployee({ show, handleClose, setEmployees }) {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formPosition">
             <Form.Label>Position</Form.Label>
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="light"
-                id="dropdown-autoclose-true"
-                className="form-control"
-                onChange={(e) => {
-                  setPosition(e.target.value);
-                }}
-              >
-                Select Position
+            <Dropdown onSelect={(e) => setPosition(e)}>
+              <Dropdown.Toggle variant="light" id="dropdown-autoclose-true" className="form-control">
+                {position || 'Select Position'}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="#">Manager</Dropdown.Item>
-                <Dropdown.Item href="#">Bartender</Dropdown.Item>
-                <Dropdown.Item href="#">Server</Dropdown.Item>
-                <Dropdown.Item href="#">Busser</Dropdown.Item>
-                <Dropdown.Item href="#">Driver</Dropdown.Item>
-                <Dropdown.Item href="#">Cook</Dropdown.Item>
-                <Dropdown.Item href="#">Washer</Dropdown.Item>
+                <Dropdown.Item eventKey="Manager">Manager</Dropdown.Item>
+                <Dropdown.Item eventKey="Bartender">Bartender</Dropdown.Item>
+                <Dropdown.Item eventKey="Server">Server</Dropdown.Item>
+                <Dropdown.Item eventKey="Busser">Busser</Dropdown.Item>
+                <Dropdown.Item eventKey="Driver">Driver</Dropdown.Item>
+                <Dropdown.Item eventKey="Cook">Cook</Dropdown.Item>
+                <Dropdown.Item eventKey="Washer">Washer</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Form.Group>

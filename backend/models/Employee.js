@@ -22,6 +22,7 @@ class Employee extends Model {
   }
 }
 
+
 Employee.init(
   {
     firstName: {

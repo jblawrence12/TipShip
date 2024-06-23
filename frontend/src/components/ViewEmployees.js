@@ -17,14 +17,7 @@ function ViewEmployees(employeeList) {
         </tr>
       </thead>
       <tbody>
-        {/* <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>453</td>
-          <td>Bartender</td>
-          <td>16.28</td>
-        </tr> */}
+        
 
         {employees.map((employee) => {
           return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import AddEmployee from "./AddEmployee"; // Import the AddEmployee component
-import RemoveEmployee from "./RemoveEmployee"; // Ensure this component is imported if it's being used
+import AddEmployee from "./AddEmployee";
+import RemoveEmployee from "./RemoveEmployee";
 import ViewEmployees from "./ViewEmployees";
 
 function SetNav({ employees, setEmployees }) {
@@ -22,25 +22,17 @@ function SetNav({ employees, setEmployees }) {
     <div className="SetNav">
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container fluid>
-          <Navbar.Brand href="#home">Portofino</Navbar.Brand>
+          <Navbar.Brand href="#home">TipShip</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#link">Current Pay Period</Nav.Link>
               <NavDropdown title="Manage Employees" id="basic-nav-dropdown">
-                <NavDropdown.Item
-                  as={Link}
-                  to="#"
-                  onClick={handleShowAddEmployee}
-                >
+                <NavDropdown.Item as={Link} to="#" onClick={handleShowAddEmployee}>
                   Add Employee
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  as={Link}
-                  to="#"
-                  onClick={handleShowRemoveEmployee}
-                >
+                <NavDropdown.Item as={Link} to="#" onClick={handleShowRemoveEmployee}>
                   Remove Employee
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="#" onClick={toggleTable}>
@@ -64,6 +56,7 @@ function SetNav({ employees, setEmployees }) {
       <RemoveEmployee
         show={showRemoveEmployeeModal}
         handleClose={handleCloseRemoveEmployee}
+        employeeList={{ employees, setEmployees }}
       />
       {/* ViewEmployees Table */}
       {showTable && (
@@ -74,3 +67,4 @@ function SetNav({ employees, setEmployees }) {
 }
 
 export default SetNav;
+
