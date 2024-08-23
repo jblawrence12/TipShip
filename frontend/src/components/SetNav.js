@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AddEmployee from "./AddEmployee";
 import RemoveEmployee from "./RemoveEmployee";
 import ViewEmployees from "./ViewEmployees";
+import Payroll from "./Payroll";
 
 function SetNav({ employees, setEmployees }) {
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
   const [showRemoveEmployeeModal, setShowRemoveEmployeeModal] = useState(false);
   const [showTable, setShowTable] = useState(false);
+  const [showPayrollForm, setShowPayrollForm] = useState(false);
 
   const toggleTable = () => setShowTable(!showTable);
+
+  const handleShowPayrollForm = () => setShowPayrollForm(true);
+  const handleClosePayrollForm = () => setShowPayrollForm(false);
 
   const handleShowAddEmployee = () => setShowAddEmployeeModal(true);
   const handleCloseAddEmployee = () => setShowAddEmployeeModal(false);
@@ -28,6 +33,8 @@ function SetNav({ employees, setEmployees }) {
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#link">Current Pay Period</Nav.Link>
+              <Nav.Link href="#link" onClick={handleShowPayrollForm} >Payroll </Nav.Link>
+              <Nav.Link href="#link">Deposits</Nav.Link>
               <NavDropdown title="Manage Employees" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="#" onClick={handleShowAddEmployee}>
                   Add Employee
@@ -62,6 +69,12 @@ function SetNav({ employees, setEmployees }) {
       {showTable && (
         <ViewEmployees employees={employees} setEmployees={setEmployees} />
       )}
+      {/*Forms*/}
+      <Payroll
+        employeeList={{ employees, setEmployees }}
+        show={showPayrollForm}
+        handleClose={handleClosePayrollForm}
+      />
     </div>
   );
 }

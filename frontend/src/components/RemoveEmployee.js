@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Employee from './Employee';
 
 function RemoveEmployee({ show, handleClose, employeeList }) {
   const { employees, setEmployees } = employeeList;
@@ -12,19 +13,24 @@ function RemoveEmployee({ show, handleClose, employeeList }) {
     console.log("Employees received in RemoveEmployee:", employees); // Debugging line
   }, [employees]);
 
-  const handleSelect = (employeeID, employeeName) => {
-    setSelectedEmployee({ employeeID, employeeName });
+  const handleSelect = (employeeID) => {
+    setSelectedEmployee({ employeeID });
   };
 
   const handleRemove = async () => {
     if (selectedEmployee) {
       try {
-        await fetch(`http://localhost:4000/api/employees/${selectedEmployee.employeeID}`, {
+        const response = await fetch(`http://localhost:4000/api/employee/${selectedEmployee.employeeID}`, {
           method: 'DELETE',
         });
-        setEmployees(employees.filter((emp) => emp.employeeID !== selectedEmployee.employeeID));
-        setSelectedEmployee(null);
-        handleClose();
+        if (response.ok) {
+          setEmployees(employees.filter((emp) => emp.employeeID !== selectedEmployee.employeeID));
+          setSelectedEmployee(null);
+          handleClose();
+        } else {
+          const data = await response.json();
+          console.error('Error removing employee:', data.message);
+        }
       } catch (error) {
         console.error('Error removing employee:', error);
       }
@@ -42,15 +48,15 @@ function RemoveEmployee({ show, handleClose, employeeList }) {
             <Form.Label>Employee List</Form.Label>
             <Dropdown>
               <Dropdown.Toggle variant="light" id="dropdown-autoclose-true" className="form-control">
-                {selectedEmployee ? selectedEmployee.employeeName : 'Select Employee'}
+                {selectedEmployee ? selectedEmployee.employeeID : 'Select Employee'}
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {employees.map((employee) => (
                   <Dropdown.Item
                     key={employee.employeeID}
-                    onClick={() => handleSelect(employee.employeeID, employee.firstName + " " + employee.lastName)}
+                    onClick={() => handleSelect(employee.employeeID)}
                   >
-                    {employee.firstName + " " + employee.lastName}
+                    {employee.firstName + " " + employee.lastName + " " + employee.employeeID}
                   </Dropdown.Item>
                 ))}
               </Dropdown.Menu>

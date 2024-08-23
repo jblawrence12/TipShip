@@ -118,9 +118,7 @@ function AddEmployee({ show, handleClose, setEmployees }) {
         <Button variant="secondary" type="submit" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button>
+        
       </Modal.Footer>
     </Modal>
   );

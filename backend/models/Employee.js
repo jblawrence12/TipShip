@@ -20,6 +20,21 @@ class Employee extends Model {
     const employees = await Employee.findAll();
     return employees;
   }
+
+  static async deleteEmployee(employeeID) {
+    try {
+      const employee = await Employee.findByPk(employeeID);
+      if (employee) {
+        await employee.destroy();
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
 }
 
 
