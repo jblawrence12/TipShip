@@ -28,7 +28,6 @@ function Payroll({employeeList, show, handleClose }) {
           </Form.Group>
         </Col>
       </Row>
-      
     ))}
     <Button variant="primary" type="submit" onClick ={handleClose}>
       Submit
@@ -39,5 +38,4 @@ function Payroll({employeeList, show, handleClose }) {
   </div>
   );
 }
-
 export default Payroll;
