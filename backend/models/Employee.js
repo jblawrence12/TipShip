@@ -61,6 +61,10 @@ Employee.init(
       type: DataTypes.DOUBLE,
       allowNull: false,
     },
+    tipOutOverride: {
+      type: DataTypes.DOUBLE,
+      allowNull: true,  
+    },
   },
   {
     sequelize,

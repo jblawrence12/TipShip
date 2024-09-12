@@ -46,6 +46,7 @@ router.post("/", async function (req, res, next) {
       employeeID: req.body.employeeID,
       position: req.body.position,
       wage: req.body.wage,
+      tipOutOverride: req.body.tipOutOverride,
     });
     res.json({ msg: `employee ${req.body.employeeID} created successfully` });
   } catch (error) {
