@@ -12,6 +12,7 @@ function Employee(user) {
       <td>{employee.employeeID}</td>
       <td>{employee.position}</td>
       <td>{employee.wage}</td>
+      <td>{employee.tipOutOverride}</td>
     </tr>
   );
 }

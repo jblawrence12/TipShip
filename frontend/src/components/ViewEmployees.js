@@ -14,6 +14,7 @@ function ViewEmployees(employeeList) {
           <th>Employee ID</th>
           <th>Position</th>
           <th>Wage</th>
+          <th>Tip Override</th>
         </tr>
       </thead>
       <tbody>

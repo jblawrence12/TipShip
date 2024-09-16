@@ -1,0 +1,31 @@
+Software Goals
+    This software should allow the user to:
+        Classes:
+            Add employees
+                Properties:
+                    First Name
+                    Last Name
+                    Position
+                    EmployeeID
+                    Wage
+                    TipOutOverride in the case that the tip out is different than that of other people in that position
+            Remove employees
+            Edit employees
+            Payroll Information
+                Properties:
+                    //Note Names will auto generate from database
+                    Hours worked
+                    Tips accrued
+            View Payperiod
+                Properties:
+                    Hours worked 
+                    Tips    
+                    Tipouts
+                    Compensation= Wage+Tip
+            SetTipOut
+                Properties:
+                    TipOut Percentage needs to be set for each position. Wil be drop down and clickable
+                    3%Credit fee will be a checkbox
+
+
+

@@ -6,11 +6,6 @@ class TipOut extends Model {}
 
 TipOut.init(
   {
-    tipOutID: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     employeeID: {
       type: DataTypes.INTEGER,
       allowNull: false,

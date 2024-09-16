@@ -10,6 +10,7 @@ function AddEmployee({ show, handleClose, setEmployees }) {
   const [employeeID, setEmployeeID] = useState("");
   const [position, setPosition] = useState("");
   const [wage, setWage] = useState("");
+  const [tipOutOverride, setTipOutOverride] = useState("");
 
   async function postData(url = "", data = {}) {
     // Default options are marked with *
@@ -35,6 +36,7 @@ function AddEmployee({ show, handleClose, setEmployees }) {
       employeeID,
       position,
       wage,
+      tipOutOverride,
     };
     postData("http://localhost:4000/api/employee", employee).then(() => {
       setEmployees((currentEmployees) => [...currentEmployees, employee]);
@@ -106,6 +108,17 @@ function AddEmployee({ show, handleClose, setEmployees }) {
               autoFocus
               onChange={(e) => {
                 setWage(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formTip">
+            <Form.Label>Tip Out Override</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Tip Override"
+              autoFocus
+              onChange={(e) => {
+                setTipOutOverride(e.target.value);
               }}
             />
           </Form.Group>
